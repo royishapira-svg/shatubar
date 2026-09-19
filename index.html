@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שתו בר  | בר בירה רטרו לאירועים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Suez+One&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-dark:#241208;
+    --bg-mid:#38210f;
+    --bg-mid-2:#432711;
+    --amber:#e0a23b;
+    --amber-light:#f2c876;
+    --amber-deep:#c9821f;
+    --hop:#77875a;
+    --hop-light:#98a878;
+    --cream:#f4ead4;
+    --cream-dim:#cfc1a3;
+    --copper:#b87b48;
+    --line: rgba(244,234,212,0.14);
+    --maxw: 1160px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-dark);
+    color:var(--cream);
+    font-family:'Assistant', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand,.btn,.label-title{
+    font-family:'Suez One', serif;
+    font-weight:400;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  section{position:relative;}
+
+  ::selection{background:var(--amber); color:var(--bg-dark);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(36,18,8,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    font-size:1.5rem;
+    color:var(--amber-light);
+    letter-spacing:0.5px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand svg{width:30px;height:30px;}
+  .nav-links{display:flex; gap:30px; font-size:1rem; color:var(--cream-dim);}
+  .nav-links a:hover{color:var(--amber-light);}
+  .nav-cta{
+    display:inline-block;
+    background:var(--amber);
+    color:var(--bg-dark);
+    padding:10px 22px;
+    font-family:'Assistant';
+    font-weight:700;
+    border-radius:2px;
+  }
+  .nav-cta:hover{background:var(--amber-light);}
+  .nav-toggle{display:none; background:none; border:none; color:var(--cream); font-size:1.8rem; cursor:pointer;}
+
+  @media(max-width:760px){
+    .nav-links{
+      position:absolute; inset-inline:0; top:100%;
+      flex-direction:column; gap:0;
+      background:var(--bg-mid);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden;
+      transition:max-height .3s ease;
+    }
+    .nav-links.open{max-height:300px;}
+    .nav-links a{padding:16px 28px; border-top:1px solid var(--line);}
+    .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 90px;
+    background:
+      radial-gradient(ellipse at 75% 20%, rgba(224,162,59,0.16), transparent 55%),
+      linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:50px;
+    align-items:center;
+  }
+  .eyebrow-plain{
+    color:var(--hop-light);
+    font-size:1rem;
+    margin:0 0 14px;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem, 5.2vw, 4.1rem);
+    line-height:1.12;
+    color:var(--cream);
+    margin:0 0 22px;
+  }
+  .hero h1 .amber{color:var(--amber);}
+  .hero p.lead{
+    font-size:1.2rem;
+    color:var(--cream-dim);
+    max-width:46ch;
+    margin:0 0 34px;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:15px 30px;
+    font-size:1.05rem;
+    border-radius:2px;
+    cursor:pointer;
+    border:none;
+  }
+  .btn-primary{background:var(--amber); color:var(--bg-dark);}
+  .btn-primary:hover{background:var(--amber-light);}
+  .btn-ghost{background:transparent; color:var(--cream); border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--amber); color:var(--amber-light);}
+
+  .glass-wrap{
+    display:flex; justify-content:center; align-items:flex-end;
+  }
+  .glass{width:min(280px, 70vw);}
+  .pour{
+    transform-origin:bottom;
+    animation:fill 1.7s cubic-bezier(.2,.7,.3,1) both;
+    animation-delay:.2s;
+  }
+  .foamline{
+    animation:foamrise 1.7s cubic-bezier(.2,.7,.3,1) both;
+    animation-delay:.2s;
+  }
+  @keyframes fill{
+    from{transform:scaleY(0);}
+    to{transform:scaleY(1);}
+  }
+  @keyframes foamrise{
+    from{transform:translateY(60px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+  }
+  .clink{animation:clink 1.2s cubic-bezier(.3,.9,.4,1.2) both; animation-delay:1.5s;}
+  .clink-l{--dir:-1;}
+  .clink-r{--dir:1;}
+  @keyframes clink{
+    0%{transform:translateX(calc(var(--dir) * 30px));}
+    62%{transform:translateX(calc(var(--dir) * -4px));}
+    100%{transform:translateX(0);}
+  }
+  .sparks{
+    opacity:0;
+    animation:sparks .7s ease-out both;
+    animation-delay:2.25s;
+  }
+  @keyframes sparks{
+    0%{opacity:0; transform:scale(.55); transform-origin:110px 80px;}
+    35%{opacity:.95; transform:scale(1); transform-origin:110px 80px;}
+    100%{opacity:0; transform:scale(1.25); transform-origin:110px 80px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pour, .foamline, .clink, .sparks{animation:none;}
+    .sparks{opacity:.8;}
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(26px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero p.lead{margin-inline:auto;}
+    .hero-ctas{justify-content:center;}
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  .sec-head{max-width:640px; margin-bottom:52px;}
+  .sec-head.center{margin-inline:auto; text-align:center;}
+  .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem); color:var(--amber-light); margin:0 0 14px;}
+  .sec-head p{color:var(--cream-dim); font-size:1.08rem; margin:0;}
+
+  /* ---------- ABOUT ---------- */
+  .about{padding:100px 0; background:var(--bg-dark);}
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+  }
+  .about-copy p{color:var(--cream-dim); font-size:1.1rem; margin:0 0 20px;}
+  .about-copy strong{color:var(--cream); font-weight:600;}
+  .stat-row{display:flex; gap:36px; margin-top:36px; flex-wrap:wrap;}
+  .stat b{display:block; font-family:'Suez One'; font-size:2.1rem; color:var(--amber);}
+  .stat span{color:var(--cream-dim); font-size:0.95rem;}
+
+  .van-art{display:flex; justify-content:center;}
+  .van-art svg{width:min(330px,82%);}
+
+  @media(max-width:860px){
+    .about-grid{grid-template-columns:1fr;}
+    .van-art{order:-1;}
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how{padding:100px 0; background:var(--bg-mid); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .steps{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    counter-reset:step;
+    border-top:1px solid var(--line);
+  }
+  .step{
+    padding:38px 30px 30px;
+    border-inline-end:1px solid var(--line);
+    position:relative;
+  }
+  .step:last-child{border-inline-end:none;}
+  .step-num{
+    font-family:'Suez One';
+    font-size:1rem;
+    color:var(--bg-mid);
+    background:var(--amber);
+    width:34px; height:34px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    margin-bottom:20px;
+  }
+  .step h3{color:var(--cream); font-size:1.3rem; margin:0 0 10px;}
+  .step p{color:var(--cream-dim); margin:0; font-size:1rem;}
+
+  @media(max-width:760px){
+    .steps{grid-template-columns:1fr;}
+    .step{border-inline-end:none; border-bottom:1px solid var(--line);}
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{padding:100px 0; background:var(--bg-dark);}
+  .gal-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:130px;
+    gap:14px;
+  }
+  .gal-item{
+    position:relative;
+    grid-column:span 3;
+    grid-row:span 2;
+    overflow:hidden;
+    display:flex; align-items:flex-end;
+    padding:18px;
+    color:var(--cream);
+    font-size:0.95rem;
+  }
+  .gal-item:nth-child(1){grid-column:span 4; grid-row:span 3;}
+  .gal-item:nth-child(2){grid-column:span 2; grid-row:span 2;}
+  .gal-item:nth-child(3){grid-column:span 2; grid-row:span 2;}
+  .gal-item:nth-child(4){grid-column:span 2; grid-row:span 1;}
+  .gal-item:nth-child(5){grid-column:span 3; grid-row:span 2;}
+  .gal-item:nth-child(6){grid-column:span 3; grid-row:span 2;}
+
+  .gal-item::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, transparent 40%, rgba(20,10,4,0.75) 100%),
+      var(--g);
+  }
+  .gal-item span{position:relative; z-index:1; font-weight:600;}
+  .gal-item svg{position:absolute; top:16px; inset-inline-end:16px; width:26px; height:26px; opacity:.55; z-index:1;}
+
+  .gal-1{--g:linear-gradient(135deg,#7a4a1f,#c9821f);}
+  .gal-2{--g:linear-gradient(135deg,#3f2413,#77875a);}
+  .gal-3{--g:linear-gradient(135deg,#5b3418,#e0a23b);}
+  .gal-4{--g:linear-gradient(135deg,#2c180b,#b87b48);}
+  .gal-5{--g:linear-gradient(135deg,#432711,#98a878);}
+  .gal-6{--g:linear-gradient(135deg,#6a3f1c,#f2c876);}
+
+  .gallery-note{
+    margin-top:26px; color:var(--cream-dim); font-size:0.92rem;
+    border-inline-start:3px solid var(--hop); padding-inline-start:14px;
+  }
+
+  @media(max-width:760px){
+    .gal-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+    .gal-item, .gal-item:nth-child(1), .gal-item:nth-child(2), .gal-item:nth-child(3),
+    .gal-item:nth-child(4), .gal-item:nth-child(5), .gal-item:nth-child(6){
+      grid-column:span 1; grid-row:span 2;
+    }
+  }
+
+  /* ---------- PACKAGES ---------- */
+  .packages{padding:100px 0; background:var(--bg-mid); border-top:1px solid var(--line);}
+  .pkg-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:30px;
+    align-items:start;
+  }
+  .pkg{
+    background:var(--bg-dark);
+    border:1px solid var(--line);
+    padding:40px 28px 34px;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
+    padding-bottom:64px;
+  }
+  .pkg.featured{
+    background:linear-gradient(180deg, #3a2410, var(--bg-dark));
+    border-color:var(--amber-deep);
+  }
+  .pkg-title{font-family:'Suez One'; font-size:1.5rem; color:var(--amber-light); margin:0 0 6px;}
+  .pkg-tag{color:var(--hop-light); font-size:0.9rem; margin:0 0 22px;}
+  .pkg-price{font-family:'Suez One'; font-size:2.1rem; color:var(--cream); margin:0 0 22px;}
+  .pkg-price sup{font-size:1rem; color:var(--cream-dim);}
+  .pkg ul{list-style:none; margin:0 0 10px; padding:0;}
+  .pkg li{
+    padding:9px 0; border-top:1px solid var(--line);
+    color:var(--cream-dim); font-size:0.98rem;
+  }
+  .pkg li:first-child{border-top:none;}
+
+  @media(max-width:860px){
+    .pkg-grid{grid-template-columns:1fr; max-width:420px; margin-inline:auto;}
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi{padding:100px 0; background:var(--bg-dark);}
+  .testi-grid{display:grid; grid-template-columns:1fr 1fr; gap:30px;}
+  .testi-card{
+    border-inline-start:3px solid var(--amber);
+    padding:6px 0 6px 0; padding-inline-start:24px;
+  }
+  .testi-card p{font-size:1.15rem; color:var(--cream); margin:0 0 14px;}
+  .testi-card cite{color:var(--cream-dim); font-style:normal; font-size:0.95rem;}
+
+  @media(max-width:760px){.testi-grid{grid-template-columns:1fr;}}
+
+  /* ---------- CONTACT ---------- */
+  .contact{padding:100px 0 110px; background:var(--bg-mid); border-top:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .contact-info h2{font-size:clamp(1.9rem,3.4vw,2.6rem); color:var(--amber-light); margin:0 0 18px;}
+  .contact-info p{color:var(--cream-dim); font-size:1.08rem; margin:0 0 26px; max-width:42ch;}
+  .info-line{display:flex; align-items:center; gap:12px; margin-bottom:14px; color:var(--cream);}
+  .info-line svg{width:20px;height:20px; color:var(--amber); flex-shrink:0;}
+  .info-line a:hover{color:var(--amber-light); text-decoration:underline;}
+
+  form{display:flex; flex-direction:column; gap:16px;}
+  form input, form textarea{
+    width:100%;
+    background:var(--bg-dark);
+    border:1px solid var(--line);
+    color:var(--cream);
+    padding:14px 16px;
+    font-family:'Assistant';
+    font-size:1rem;
+    border-radius:2px;
+  }
+  form input::placeholder, form textarea::placeholder{color:#8a7a63;}
+  form input:focus, form textarea:focus{outline:2px solid var(--amber); border-color:transparent;}
+  form textarea{resize:vertical; min-height:100px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .form-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:4px;}
+  .form-actions .btn{flex:0 0 auto;}
+  #waBtn{border-color:var(--hop); color:var(--hop-light);}
+  #waBtn:hover{border-color:var(--hop-light); color:var(--cream);}
+  .form-status{margin:2px 0 0; font-size:0.97rem; min-height:1.4em; color:var(--cream-dim);}
+  .form-status.ok{color:var(--hop-light);}
+  .form-status.err{color:#e8926a;}
+  form button[disabled]{opacity:.6; cursor:progress;}
+
+  @media(max-width:860px){
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--bg-dark); padding:34px 0; border-top:1px solid var(--line);
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{margin:0; color:#8a7a63; font-size:0.9rem;}
+  footer .a11y-statement{
+    max-width:760px; line-height:1.7; font-size:0.86rem;
+    color:#7a6a54;
+  }
+  footer .a11y-statement a{color:var(--copper); text-decoration:underline;}
+  footer .a11y-statement a:hover{color:var(--amber-light);}
+
+  .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);}
+
+  /* ---------- ACCESSIBILITY WIDGET ---------- */
+  .a11y-btn{
+    position:fixed; z-index:200; bottom:22px; inset-inline-start:22px;
+    width:52px; height:52px; border-radius:50%;
+    background:var(--amber); color:var(--bg-dark);
+    border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.35);
+  }
+  .a11y-btn svg{width:28px;height:28px;}
+  .a11y-btn:hover{background:var(--amber-light);}
+
+  .a11y-panel{
+    position:fixed; z-index:200; bottom:82px; inset-inline-start:22px;
+    width:280px; max-width:calc(100vw - 44px);
+    background:var(--bg-mid-2); border:1px solid var(--line);
+    border-radius:8px; padding:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.45);
+    display:none;
+  }
+  .a11y-panel.open{display:block;}
+  .a11y-panel h2{
+    font-family:'Assistant'; font-size:1.05rem; font-weight:700;
+    color:var(--amber-light); margin:0 0 14px;
+  }
+  .a11y-row{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; padding:9px 0; border-top:1px solid var(--line);
+    font-size:0.94rem; color:var(--cream);
+  }
+  .a11y-row:first-of-type{border-top:none;}
+  .a11y-row button{
+    background:transparent; border:1px solid var(--line); color:var(--cream);
+    border-radius:4px; padding:6px 10px; font-family:'Assistant'; font-size:0.9rem;
+    cursor:pointer;
+  }
+  .a11y-row button.active, .a11y-row button:hover{border-color:var(--amber); color:var(--amber-light);}
+  .a11y-fontctrl{display:flex; gap:6px;}
+  .a11y-reset{
+    width:100%; margin-top:12px; padding:9px; text-align:center;
+    background:transparent; border:1px solid var(--line); color:var(--cream-dim);
+    border-radius:4px; font-family:'Assistant'; font-size:0.9rem; cursor:pointer;
+  }
+  .a11y-reset:hover{border-color:var(--amber); color:var(--amber-light);}
+
+  /* state classes on <html> */
+  html.a11y-font-1 body{font-size:1.08em;}
+  html.a11y-font-2 body{font-size:1.18em;}
+  html.a11y-font-3 body{font-size:1.3em;}
+
+  html.a11y-contrast body{background:#000; color:#fff;}
+  html.a11y-contrast{--bg-dark:#000; --bg-mid:#000; --bg-mid-2:#000; --cream:#fff; --cream-dim:#e6e6e6; --amber:#ffd166; --amber-light:#ffe08a; --line:rgba(255,255,255,0.35);}
+  html.a11y-contrast .glass path[opacity], html.a11y-contrast .foamline{opacity:1 !important;}
+
+  html.a11y-grayscale body{filter:grayscale(1);}
+
+  html.a11y-underline a{text-decoration:underline !important;}
+
+  html.a11y-readable body, html.a11y-readable h1, html.a11y-readable h2, html.a11y-readable h3{
+    font-family:Arial, Helvetica, sans-serif !important;
+    letter-spacing:0.01em;
+  }
+
+  html.a11y-pause *, html.a11y-pause *::before, html.a11y-pause *::after{
+    animation-play-state:paused !important;
+    transition:none !important;
+  }
+
+  @media(max-width:480px){
+    .a11y-btn{bottom:16px; inset-inline-start:16px; width:46px; height:46px;}
+    .a11y-panel{bottom:70px; inset-inline-start:16px;}
+  }
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 8.5h10v9.5a2.5 2.5 0 0 1-2.5 2.5H8a2.5 2.5 0 0 1-2.5-2.5V8.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.5 11h1.6a2.4 2.4 0 0 1 0 4.8h-1.6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.5 8.5c-.2-1.7 1-2.7 2.3-2.4A2.5 2.5 0 0 1 10.5 4.5a2.5 2.5 0 0 1 2.4 1.6c1.3-.3 2.8.6 2.6 2.4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.6 11.8v5M12.4 11.8v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".75"/></svg>
+      שתו בר 
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="פתיחת תפריט">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">מי אנחנו</a>
+      <a href="#how">איך זה עובד</a>
+      <a href="#gallery">גלריה</a>
+      <a href="#packages">חבילות</a>
+      <a href="#contact">יצירת קשר</a>
+    </div>
+    <a href="#contact" class="nav-cta">לתיאום אירוע</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow-plain">בר בירה רטרו נייד לכל אירוע</p>
+        <h1>בירה קרה,<br><span class="amber">איפה שתרצו.</span></h1>
+        <p class="lead">שתו בר מביאים לכם פינת בר שמחה, חיה ובועטת — לחתונות, ימי הולדת ואירועי חברה, בכל מקום בארץ.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">לתיאום אירוע</a>
+          <a href="#packages" class="btn btn-ghost">לצפייה בחבילות</a>
+        </div>
+      </div>
+      <div class="glass-wrap">
+        <svg class="glass" viewBox="0 0 220 300" fill="none" role="img" aria-label="שתי כוסות בירה מרימות לחיים">
+          <defs>
+            <linearGradient id="beerGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f2c876"/>
+              <stop offset="1" stop-color="#c9821f"/>
+            </linearGradient>
+            <clipPath id="mugClip">
+              <path d="M3 3H69L60.5 139a10 10 0 0 1-10 9H21.5a10 10 0 0 1-10-9L3 3Z"/>
+            </clipPath>
+          </defs>
+
+          <ellipse cx="110" cy="268" rx="84" ry="12" fill="#000" opacity="0.25"/>
+
+          <!-- right mug -->
+          <g class="clink clink-r">
+            <g transform="translate(160 255) rotate(-8) translate(-36 -151)">
+              <path d="M72 44h9a23 23 0 0 1 0 46h-9" stroke="#f4ead4" stroke-width="3" opacity="0.5" fill="none"/>
+              <path d="M0 0h72l-9 140a12 12 0 0 1-12 11H21a12 12 0 0 1-12-11L0 0Z" stroke="#f4ead4" stroke-width="3" opacity="0.5" fill="none"/>
+              <g clip-path="url(#mugClip)">
+                <rect class="pour" x="0" y="16" width="72" height="140" fill="url(#beerGrad)"/>
+              </g>
+              <g class="foamline">
+                <rect x="-3" y="-9" width="78" height="20" rx="7" fill="#f4ead4"/>
+                <circle cx="13" cy="-9" r="9" fill="#f4ead4"/>
+                <circle cx="36" cy="-14" r="11" fill="#f4ead4"/>
+                <circle cx="59" cy="-10" r="9" fill="#f4ead4"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- left mug -->
+          <g class="clink clink-l">
+            <g transform="translate(60 255) rotate(8) translate(-36 -151)">
+              <path d="M0 44h-9a23 23 0 0 0 0 46h9" stroke="#f4ead4" stroke-width="3" opacity="0.5" fill="none"/>
+              <path d="M0 0h72l-9 140a12 12 0 0 1-12 11H21a12 12 0 0 1-12-11L0 0Z" stroke="#f4ead4" stroke-width="3" opacity="0.5" fill="none"/>
+              <g clip-path="url(#mugClip)">
+                <rect class="pour" x="0" y="16" width="72" height="140" fill="url(#beerGrad)"/>
+              </g>
+              <g class="foamline">
+                <rect x="-3" y="-9" width="78" height="20" rx="7" fill="#f4ead4"/>
+                <circle cx="13" cy="-9" r="9" fill="#f4ead4"/>
+                <circle cx="36" cy="-14" r="11" fill="#f4ead4"/>
+                <circle cx="59" cy="-10" r="9" fill="#f4ead4"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- clink sparks -->
+          <g class="sparks" stroke="#f2c876" stroke-width="3" stroke-linecap="round">
+            <path d="M110 74v-13"/>
+            <path d="M88 82l-8-10"/>
+            <path d="M132 82l8-10"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="about-copy reveal">
+        <p class="eyebrow-plain">מי אנחנו</p>
+        <h2 style="color:var(--amber-light); font-size:clamp(1.9rem,3.4vw,2.6rem); margin:0 0 22px;">הפאב מגיע אליכם</h2>
+        <p><strong> שתו בר </strong> היא עגלת מזיגה רטרו - בוטיקית שמגיעה לחצר, לגן האירועים או לקומת הכנסים שלכם, עם ברזים קרים ובירה שמוגשת בטמפרטורה מושלמת מהרגע הראשון ועד אחרון האורחים.</p>
+        <p>אנחנו דואגים לציוד, לקירור וללוגיסטיקה — אתם דואגים רק להביא אנשים צמאים.</p>
+        <div class="stat-row">
+          <div class="stat"><b>1000</b><span>חיוכים שנמזגים בכל אירוע</span></div>
+          <div class="stat"><b>+40</b><span>מבחר הבירות שניתן למזוג דרכנו</span></div>
+          <div class="stat"><b>0</b><span>פשרות על טמפרטורה</span></div>
+        </div>
+      </div>
+      <div class="van-art reveal">
+        <svg viewBox="0 0 260 260" fill="none" role="img" aria-label="ואן רטרו של בר הבירה הנייד">
+          <defs>
+            <linearGradient id="vanBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e8a844"/>
+              <stop offset="1" stop-color="#b8701a"/>
+            </linearGradient>
+            <clipPath id="vanClip">
+              <path d="M48 96c0-30 24-54 54-54h56c30 0 54 24 54 54v104c0 8-6 14-14 14H62c-8 0-14-6-14-14V96Z"/>
+            </clipPath>
+          </defs>
+
+          <ellipse cx="130" cy="236" rx="88" ry="13" fill="#000" opacity="0.25"/>
+
+          <!-- wheels -->
+          <rect x="50" y="194" width="36" height="38" rx="13" fill="#1c0f06"/>
+          <rect x="174" y="194" width="36" height="38" rx="13" fill="#1c0f06"/>
+
+          <g clip-path="url(#vanClip)">
+            <rect x="40" y="30" width="180" height="200" fill="url(#vanBody)"/>
+            <!-- classic two-tone V panel -->
+            <path d="M40 154 130 106 220 154V30H40Z" fill="#f4ead4"/>
+            <path d="M40 154 130 106 220 154" stroke="#b87b48" stroke-width="3" fill="none"/>
+
+            <!-- split windshield -->
+            <rect x="62" y="62" width="62" height="42" rx="11" fill="#241208"/>
+            <rect x="136" y="62" width="62" height="42" rx="11" fill="#241208"/>
+            <path d="M70 100 96 66" stroke="#f4ead4" stroke-width="5" opacity=".18" stroke-linecap="round"/>
+            <path d="M144 100 170 66" stroke="#f4ead4" stroke-width="5" opacity=".18" stroke-linecap="round"/>
+
+            <!-- headlights -->
+            <circle cx="74" cy="166" r="16" fill="#f4ead4"/>
+            <circle cx="74" cy="166" r="9" fill="#f2c876"/>
+            <circle cx="186" cy="166" r="16" fill="#f4ead4"/>
+            <circle cx="186" cy="166" r="9" fill="#f2c876"/>
+
+            <!-- emblem -->
+            <circle cx="130" cy="130" r="18" fill="#241208" stroke="#f4ead4" stroke-width="2.5"/>
+            <path d="M125 127h10v9a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3v-9Z" fill="#e0a23b"/>
+            <rect x="123.5" y="123" width="13" height="5" rx="2.5" fill="#f4ead4"/>
+
+            <!-- bumper + plate -->
+            <rect x="44" y="188" width="172" height="16" rx="8" fill="#f4ead4" opacity=".92"/>
+            <rect x="108" y="160" width="44" height="16" rx="3" fill="#f4ead4"/>
+            <path d="M116 168h6M126 168h6M136 168h6" stroke="#241208" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+
+          <path d="M48 96c0-30 24-54 54-54h56c30 0 54 24 54 54v104c0 8-6 14-14 14H62c-8 0-14-6-14-14V96Z" stroke="#2c180b" stroke-width="3"/>
+
+          <!-- mirrors -->
+          <path d="M48 112H36M212 112h12" stroke="#2c180b" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="32" cy="112" r="6" fill="#f4ead4" stroke="#2c180b" stroke-width="2.5"/>
+          <circle cx="228" cy="112" r="6" fill="#f4ead4" stroke="#2c180b" stroke-width="2.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>איך זה עובד</h2>
+        <p>משלוש שאלות קצרות לערב שלם של מזיגה — בלי כאב ראש. </p>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>יוצרים קשר</h3>
+          <p>מספרים לנו על תאריך האירוע, המיקום ומספר האורחים המשוער.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>בונים חבילה</h3>
+          <p>בוחרים סוגי בירה, שעות מזיגה ותוספות שמתאימות לאירוע שלכם.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>מוזגים כל הערב</h3>
+          <p>מגיעים עם העמדה הבלתי נשכחת שלנו, מחברים את החביות ומוזגים ברציפות עד סוף האירוע.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>רגעים מהשטח</h2>
+        <p>קטעים מאירועים אחרונים שליווינו — מקום התמונות הסופי ימתין לתמונות האמיתיות שלכם.</p>
+      </div>
+      <div class="gal-grid reveal">
+        <div class="gal-item gal-1"><span>חתונה, כרם ביבנה</span></div>
+        <div class="gal-item gal-2"><span>יום הולדת 30</span></div>
+        <div class="gal-item gal-3"><span>אירוע חברה</span></div>
+        <div class="gal-item gal-4"><span>בר מצווה</span></div>
+        <div class="gal-item gal-5"><span>מסיבת גג</span></div>
+        <div class="gal-item gal-6"><span>אירוסין</span></div>
+      </div>
+      <p class="gallery-note">התמונות למעלה הן ממלאות מקום בעיצוב בלבד. ברגע שיש תמונות אמיתיות מהאירועים שלך, נחליף אותן בקלות.</p>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages" id="packages">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>חבילות</h2>
+        <p>שלוש נקודות פתיחה — כל חבילה ניתנת להתאמה לפי גודל האירוע ומספר האורחים.</p>
+      </div>
+      <div class="pkg-grid reveal">
+        <div class="pkg">
+          <p class="pkg-title">חבית בוטיק</p>
+          <p class="pkg-tag">לשמחות קטנות בחצר הבית</p>
+          <p class="pkg-price"><sup> </sup></p>
+          <ul>
+            <li> עד 70 אורחים</li>
+            <li>2 סוגי בירה</li>
+            <li>עגלת מזיגה + 2 מגישים </li>
+          </ul>
+        </div>
+        <div class="pkg featured">
+          <p class="pkg-title">חבית קלאסית</p>
+          <p class="pkg-tag">לאירועים שחייבים בירה ביד  </p>
+          <p class="pkg-price"><sup> </sup></p>
+          <ul>
+            <li>עד 200 אורחים</li>
+            <li>מעל ל4 חביות </li>
+            <li>עגלת מזיגה + שני מוזגים</li>
+          
+          </ul>
+        </div>
+        <div class="pkg">
+          <p class="pkg-title">חבית XXL</p>
+          <p class="pkg-tag">לאירועים  אקסטרה אקסטרה משמחים</p>
+          <p class="pkg-price"><sup></sup></p>
+          <ul>
+            <li>200 אורחים ומעלה</li>
+            <li>מעל ל6 חביות </li>
+            <li>עמדת מזיגה + 2 מוזגים</li>
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>מה אומרים</h2>
+      </div>
+      <div class="testi-grid reveal">
+        <div class="testi-card">
+          <p>"הגיעו בזמן, הקימו הכל תוך רבע שעה, והבירה לא הפסיקה לזרום כל הערב. האורחים עדיין שואלים איפה הזמנו."</p>
+          <cite>— מהדס וגיא, חתונה בהרודיון</cite>
+        </div>
+        <div class="testi-card">
+          <p>"שכרנו לאירוע חברה ולא נצטרך לחשוב על עוד ספק בירה. פשוט, מקצועי ובלי הפתעות."</p>
+          <cite>— רכזת אירועים, חברת הייטק</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <h2>נדבר על האירוע שלכם</h2>
+        <p>השאירו פרטים ונחזור אליכם תוך יום עסקים אחד עם הצעת מחיר מותאמת.</p>
+        <div class="info-line">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.3a16 16 0 0 0 6 6l1.5-1.4a2 2 0 0 1 2.1-.4c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2Z" stroke="currentColor" stroke-width="1.6"/></svg>
+          <a href="tel:0548150272">0548150272</a>
+        </div>
+        <div class="info-line">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="none"/><path d="M4 6h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+          <a href="mailto:Royi.shapira@gmail.com">Royi.shapira@gmail.com</a>
+        </div>
+        <div class="info-line">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          פעילים בכל הארץ
+        </div>
+      </div>
+
+      <form id="contactForm" class="reveal" novalidate>
+        <div class="form-row">
+          <input type="text" name="שם מלא" id="f-name" placeholder="שם מלא" required>
+          <input type="tel" name="טלפון" id="f-phone" placeholder="טלפון" required>
+        </div>
+        <div class="form-row">
+          <input type="date" name="תאריך האירוע" id="f-date" placeholder="תאריך האירוע">
+          <input type="number" name="מספר אורחים" id="f-guests" placeholder="מספר אורחים משוער" min="1">
+        </div>
+        <textarea name="פרטים על האירוע" id="f-msg" placeholder="ספרו לנו קצת על האירוע..."></textarea>
+
+        <!-- שדה מלכודת ספאם - מוסתר מהגולשים -->
+        <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submitBtn">שליחת פנייה למייל</button>
+          <button type="button" class="btn btn-ghost" id="waBtn">שליחה בוואטסאפ</button>
+        </div>
+        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 שתו בר. כל הזכויות שמורות.</p>
+    <p class="a11y-statement">
+      הצהרת נגישות: "שתו בר" פועל כעוסק פטור, ולכן פטור על פי תקנות נגישות השירות מביצוע התאמות נגישות מלאות באתר. עם זאת, באתר משולב כפתור נגישות (בפינת המסך) המאפשר הגדלת טקסט, ניגודיות גבוהה ועוד. כל אדם הזקוק להתאמה נוספת או נתקל בקושי מוזמן לפנות אלינו ישירות
+      בטלפון <a href="tel:0548150272">0548150272</a> או במייל
+      <a href="mailto:Royi.shapira@gmail.com">Royi.shapira@gmail.com</a>, ונשמח לסייע.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  /* ===================== טופס יצירת קשר =====================
+     המייל נשלח דרך FormSubmit (ללא שרת משלך).
+     חשוב: אחרי השליחה הראשונה מהאתר החי, תגיע אליך מייל הפעלה
+     מ-FormSubmit - צריך ללחוץ על הקישור שבו פעם אחת בלבד.
+     כתובת היעד והטלפון מוגדרים בשתי השורות הבאות. */
+  const CONTACT_EMAIL = 'Royi.shapira@gmail.com';
+  const WHATSAPP_NUMBER = '972548150272'; // מספר בפורמט בינלאומי, בלי + ובלי 0 מוביל
+
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+  const waBtn = document.getElementById('waBtn');
+
+  function getData(){
+    return {
+      name: document.getElementById('f-name').value.trim(),
+      phone: document.getElementById('f-phone').value.trim(),
+      date: document.getElementById('f-date').value.trim(),
+      guests: document.getElementById('f-guests').value.trim(),
+      msg: document.getElementById('f-msg').value.trim()
+    };
+  }
+
+  function validate(d){
+    if (!d.name || !d.phone){
+      setStatus('נא למלא לפחות שם וטלפון כדי שנוכל לחזור אליכם.', 'err');
+      return false;
+    }
+    return true;
+  }
+
+  function setStatus(text, kind){
+    statusEl.textContent = text;
+    statusEl.className = 'form-status' + (kind ? ' ' + kind : '');
+  }
+
+  function buildText(d){
+    return [
+      'פנייה חדשה מאתר שתו בר',
+      'שם: ' + d.name,
+      'טלפון: ' + d.phone,
+      d.date ? 'תאריך האירוע: ' + d.date : '',
+      d.guests ? 'מספר אורחים: ' + d.guests : '',
+      d.msg ? 'פרטים: ' + d.msg : ''
+    ].filter(Boolean).join('\n');
+  }
+
+  /* --- שליחה למייל --- */
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const d = getData();
+    if (!validate(d)) return;
+    if (form.querySelector('[name="_honey"]').value) return; // בוט
+
+    submitBtn.disabled = true;
+    setStatus('שולח...', '');
+
+    try{
+      const res = await fetch('https://formsubmit.co/ajax/' + CONTACT_EMAIL, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+        body: JSON.stringify({
+          _subject: 'פנייה חדשה מהאתר - ' + d.name,
+          _template: 'table',
+          _captcha: 'false',
+          'שם מלא': d.name,
+          'טלפון': d.phone,
+          'תאריך האירוע': d.date || '-',
+          'מספר אורחים': d.guests || '-',
+          'פרטים על האירוע': d.msg || '-'
+        })
+      });
+      if (!res.ok) throw new Error('bad response');
+      setStatus('תודה! הפנייה נשלחה ונחזור אליכם תוך יום עסקים אחד.', 'ok');
+      form.reset();
+    }catch(err){
+      setStatus('השליחה נכשלה. אפשר לשלוח לנו בוואטסאפ או להתקשר ל-0548150272.', 'err');
+      window.location.href = 'mailto:' + CONTACT_EMAIL +
+        '?subject=' + encodeURIComponent('פנייה חדשה מהאתר - ' + d.name) +
+        '&body=' + encodeURIComponent(buildText(d));
+    }finally{
+      submitBtn.disabled = false;
+    }
+  });
+
+  /* --- שליחה בוואטסאפ --- */
+  waBtn.addEventListener('click', function(){
+    const d = getData();
+    if (!validate(d)) return;
+    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(buildText(d)), '_blank');
+    setStatus('נפתחה שיחת וואטסאפ עם הפרטים — רק ללחוץ שליחה.', 'ok');
+  });
+
+  // Scroll reveal: sections fade/slide up gently as they enter the viewport
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ===================== ווידג'ט נגישות ===================== */
+  (function(){
+    const html = document.documentElement;
+    const btn = document.getElementById('a11yBtn');
+    const panel = document.getElementById('a11yPanel');
+    const TOGGLE_CLASSES = ['a11y-contrast','a11y-grayscale','a11y-underline','a11y-readable','a11y-pause'];
+    const FONT_CLASSES = ['a11y-font-1','a11y-font-2','a11y-font-3'];
+    const STORE_KEY = 'shatubar-a11y';
+
+    function readState(){
+      try{ return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }
+      catch(e){ return {}; }
+    }
+    function saveState(state){
+      try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+      catch(e){ /* אחסון חסום - לא קריטי */ }
+    }
+    function currentFontLevel(){
+      for (let i=0;i<FONT_CLASSES.length;i++){
+        if (html.classList.contains(FONT_CLASSES[i])) return i+1;
+      }
+      return 0;
+    }
+    function setFontLevel(level){
+      FONT_CLASSES.forEach(c => html.classList.remove(c));
+      if (level > 0) html.classList.add(FONT_CLASSES[level-1]);
+    }
+    function syncButtonLabels(){
+      TOGGLE_CLASSES.forEach(cls => {
+        const b = panel.querySelector('[data-a11y-toggle="'+cls+'"]');
+        if (!b) return;
+        const active = html.classList.contains(cls);
+        b.textContent = active ? 'כבוי' : 'הפעלה';
+        b.classList.toggle('active', active);
+      });
+    }
+    function persist(){
+      const state = { font: currentFontLevel() };
+      TOGGLE_CLASSES.forEach(cls => state[cls] = html.classList.contains(cls));
+      saveState(state);
+    }
+
+    // שחזור מצב שמור
+    const saved = readState();
+    if (saved.font) setFontLevel(saved.font);
+    TOGGLE_CLASSES.forEach(cls => { if (saved[cls]) html.classList.add(cls); });
+    syncButtonLabels();
+
+    btn.addEventListener('click', () => {
+      const open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && !btn.contains(e.target)) panel.classList.remove('open');
+    });
+
+    panel.querySelector('[data-a11y="font-inc"]').addEventListener('click', () => {
+      setFontLevel(Math.min(3, currentFontLevel()+1));
+      persist();
+    });
+    panel.querySelector('[data-a11y="font-dec"]').addEventListener('click', () => {
+      setFontLevel(Math.max(0, currentFontLevel()-1));
+      persist();
+    });
+
+    TOGGLE_CLASSES.forEach(cls => {
+      const b = panel.querySelector('[data-a11y-toggle="'+cls+'"]');
+      b.addEventListener('click', () => {
+        html.classList.toggle(cls);
+        syncButtonLabels();
+        persist();
+      });
+    });
+
+    document.getElementById('a11yReset').addEventListener('click', () => {
+      setFontLevel(0);
+      TOGGLE_CLASSES.forEach(cls => html.classList.remove(cls));
+      syncButtonLabels();
+      saveState({});
+    });
+  })();
+</script>
+
+<!-- ACCESSIBILITY WIDGET -->
+<button type="button" class="a11y-btn" id="a11yBtn" aria-haspopup="true" aria-expanded="false" aria-controls="a11yPanel" aria-label="פתיחת תפריט נגישות">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="4.2" r="2.2"/><path d="M4 8.3c2.6.9 5.2 1.4 8 1.4s5.4-.5 8-1.4l.7 1.9c-2 .8-4 1.3-6 1.6v2.4l3.4 7.3-1.9.9-3.2-6.8h-2l-3.2 6.8-1.9-.9L9.3 14v-2.4c-2-.3-4-.8-6-1.6L4 8.3Z"/></svg>
+</button>
+
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="הגדרות נגישות">
+  <h2>הגדרות נגישות</h2>
+
+  <div class="a11y-row">
+    <span>גודל טקסט</span>
+    <div class="a11y-fontctrl">
+      <button type="button" data-a11y="font-dec" aria-label="הקטנת טקסט">א-</button>
+      <button type="button" data-a11y="font-inc" aria-label="הגדלת טקסט">א+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <span>ניגודיות גבוהה</span>
+    <button type="button" data-a11y-toggle="a11y-contrast">הפעלה</button>
+  </div>
+  <div class="a11y-row">
+    <span>גווני אפור</span>
+    <button type="button" data-a11y-toggle="a11y-grayscale">הפעלה</button>
+  </div>
+  <div class="a11y-row">
+    <span>הדגשת קישורים</span>
+    <button type="button" data-a11y-toggle="a11y-underline">הפעלה</button>
+  </div>
+  <div class="a11y-row">
+    <span>גופן קריא</span>
+    <button type="button" data-a11y-toggle="a11y-readable">הפעלה</button>
+  </div>
+  <div class="a11y-row">
+    <span>עצירת אנימציות</span>
+    <button type="button" data-a11y-toggle="a11y-pause">הפעלה</button>
+  </div>
+
+  <button type="button" class="a11y-reset" id="a11yReset">איפוס הגדרות נגישות</button>
+</div>
+
+</body>
+</html>
