@@ -278,9 +278,10 @@
   .gal-item::before{
     content:"";
     position:absolute; inset:0;
-    background:linear-gradient(180deg, transparent 35%, rgba(20,10,4,0.8) 100%), var(--g);
+    background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(20,10,4,0.42) 58%, rgba(20,10,4,0.8) 100%), var(--g);
     background-size:cover;
     background-position:center;
+    filter:brightness(1.12) saturate(1.15) contrast(1.05);
   }
   .gal-item span{position:relative; z-index:1; font-weight:600;}
 
