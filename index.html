@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>שתו בר  | בר בירה רטרו לאירועים</title>
+<title>ShtuBarEvents | Bar Service for Events</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Suez+One&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -260,43 +260,33 @@
   .gallery{padding:100px 0; background:var(--bg-dark);}
   .gal-grid{
     display:grid;
-    grid-template-columns:repeat(6,1fr);
-    grid-auto-rows:130px;
-    gap:14px;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    grid-auto-rows:300px;
+    gap:16px;
   }
   .gal-item{
     position:relative;
-    grid-column:span 3;
-    grid-row:span 2;
     overflow:hidden;
     display:flex; align-items:flex-end;
     padding:18px;
     color:var(--cream);
     font-size:0.95rem;
+    background-size:cover;
+    background-position:center;
+    border:1px solid var(--line);
   }
-  .gal-item:nth-child(1){grid-column:span 4; grid-row:span 3;}
-  .gal-item:nth-child(2){grid-column:span 2; grid-row:span 2;}
-  .gal-item:nth-child(3){grid-column:span 2; grid-row:span 2;}
-  .gal-item:nth-child(4){grid-column:span 2; grid-row:span 1;}
-  .gal-item:nth-child(5){grid-column:span 3; grid-row:span 2;}
-  .gal-item:nth-child(6){grid-column:span 3; grid-row:span 2;}
-
   .gal-item::before{
     content:"";
     position:absolute; inset:0;
-    background:
-      linear-gradient(180deg, transparent 40%, rgba(20,10,4,0.75) 100%),
-      var(--g);
+    background:linear-gradient(180deg, transparent 35%, rgba(20,10,4,0.8) 100%), var(--g);
+    background-size:cover;
+    background-position:center;
   }
   .gal-item span{position:relative; z-index:1; font-weight:600;}
-  .gal-item svg{position:absolute; top:16px; inset-inline-end:16px; width:26px; height:26px; opacity:.55; z-index:1;}
 
-  .gal-1{--g:linear-gradient(135deg,#7a4a1f,#c9821f);}
-  .gal-2{--g:linear-gradient(135deg,#3f2413,#77875a);}
-  .gal-3{--g:linear-gradient(135deg,#5b3418,#e0a23b);}
-  .gal-4{--g:linear-gradient(135deg,#2c180b,#b87b48);}
-  .gal-5{--g:linear-gradient(135deg,#432711,#98a878);}
-  .gal-6{--g:linear-gradient(135deg,#6a3f1c,#f2c876);}
+  .gal-1{--g: url('assets/event-1.jpg');}
+  .gal-2{--g: url('assets/event-2.jpg');}
+  .gal-3{--g: url('assets/event-3.jpg');}
 
   .gallery-note{
     margin-top:26px; color:var(--cream-dim); font-size:0.92rem;
@@ -304,11 +294,7 @@
   }
 
   @media(max-width:760px){
-    .gal-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
-    .gal-item, .gal-item:nth-child(1), .gal-item:nth-child(2), .gal-item:nth-child(3),
-    .gal-item:nth-child(4), .gal-item:nth-child(5), .gal-item:nth-child(6){
-      grid-column:span 1; grid-row:span 2;
-    }
+    .gal-grid{grid-template-columns:1fr; grid-auto-rows:240px;}
   }
 
   /* ---------- PACKAGES ---------- */
@@ -492,7 +478,7 @@
   <nav class="wrap">
     <a href="#top" class="brand">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 8.5h10v9.5a2.5 2.5 0 0 1-2.5 2.5H8a2.5 2.5 0 0 1-2.5-2.5V8.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.5 11h1.6a2.4 2.4 0 0 1 0 4.8h-1.6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.5 8.5c-.2-1.7 1-2.7 2.3-2.4A2.5 2.5 0 0 1 10.5 4.5a2.5 2.5 0 0 1 2.4 1.6c1.3-.3 2.8.6 2.6 2.4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.6 11.8v5M12.4 11.8v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".75"/></svg>
-      שתו בר 
+      ShtuBarEvents
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="פתיחת תפריט">☰</button>
     <div class="nav-links" id="navLinks">
@@ -686,14 +672,11 @@
         <p>קטעים מאירועים אחרונים שליווינו — מקום התמונות הסופי ימתין לתמונות האמיתיות שלכם.</p>
       </div>
       <div class="gal-grid reveal">
-        <div class="gal-item gal-1"><span>חתונה, כרם ביבנה</span></div>
-        <div class="gal-item gal-2"><span>יום הולדת 30</span></div>
-        <div class="gal-item gal-3"><span>אירוע חברה</span></div>
-        <div class="gal-item gal-4"><span>בר מצווה</span></div>
-        <div class="gal-item gal-5"><span>מסיבת גג</span></div>
-        <div class="gal-item gal-6"><span>אירוסין</span></div>
+        <div class="gal-item gal-1"><span>בר נייד בשדה</span></div>
+        <div class="gal-item gal-2"><span>אירוע עם בירה קלה</span></div>
+        <div class="gal-item gal-3"><span>מסיבת גג חמה</span></div>
       </div>
-      <p class="gallery-note">התמונות למעלה הן ממלאות מקום בעיצוב בלבד. ברגע שיש תמונות אמיתיות מהאירועים שלך, נחליף אותן בקלות.</p>
+      <p class="gallery-note">תמונות מהאירועים האחרונים שלנו: עגלת הבירה מגיעה לאן שתבחרו, עם אווירה ביתית, חמה ובועטת.</p>
     </div>
   </section>
 
